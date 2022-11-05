@@ -1,0 +1,25 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "^3.25.3",
+    "nuxt": "^2.15.8",
+    "vue": "^2.7.10",
+    "vue-filter": "^0.2.5",
+    "vue-server-renderer": "^2.7.10",
+    "vue-star-rating": "^1.7.0",
+    "vue-stripe-elements-plus": "^1.0.3",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "sass": "^1.56.0",
+    "sass-loader": "10"
+  }
+}
