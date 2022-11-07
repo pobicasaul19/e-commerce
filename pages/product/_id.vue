@@ -23,14 +23,14 @@
                 <input type="number" v-model="quantity" />
                 <button class="update-num" @click="quantity++">+</button>
             </div>
-            <div v-if="product.sizes" class="size">
+            <!-- <div v-if="product.sizes" class="size">
                 <seclect v-model="size" class="size-picker" @change="showSizeRequiredMessage = false">
-                    <option :value="null" disabled hidden>Size</option>
+                    <option :value="null" disabled selected>Select Size</option>
                     <option v-for="(size, key) in product.sizes" :key="key" :value="size">{{ size }}</option>
                 </seclect>
-            </div>
+            </div> -->
         </div>
-        <p v-if="showSizeRequiredMessage" class="size-required-message">Please choose a size</p>
+        <!-- <p v-if="showSizeRequiredMessage" class="size-required-message">Please choose a size</p> -->
         <p>
             Available in additional colors:
             <strong>
@@ -72,7 +72,7 @@ export default {
         AppFeaturedProductsVue,
         StarRating,
         AppNav,
-
+        AppFooter
     },
     data() {
         return {
@@ -99,7 +99,7 @@ export default {
             item = {
                 ...item,
                 quantity: this.quantity,
-                size: this.size,
+                // size: this.size,
             };
             this.tempcart.push(item);
             this.$store.commit("addToCart", {...item});
