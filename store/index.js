@@ -1,4 +1,5 @@
-import data from "@/static/storedata.json";
+import axios from '@nuxtjs/axios';
+import data from "../static/storedata.json";
 
 export const state = () => ({
   cartUIStatus: "idle",
@@ -13,7 +14,7 @@ export const getters = {
   men: state => state.storedata.filter(el => el.gender === "Male"),
   cartCount: state => {
     if (!state.cart.length) return 0;
-    return state.cart.reduce((ac, next) => ac + next.quantity, 0);
+    return state.cart.reduce((acc, next) => acc + next.quantity, 0);
   },
   cartTotal: state => {
     if (!state.cart.length) return 0;
@@ -63,25 +64,24 @@ export const mutations = {
   }
 };
 
-export const actions = {
-  async createPaymentIntent({ getters, commit }) {
+export const action = {
+  async createPaymentIntent({ gatters, commit}) {
     try {
       const result = await axios.post(
-        "",
+        "http://localhost:3000/api/create-payment-intent",
         {
-          items: getters.cartItems
+          items: gatters.cartItems
         },
         {
           headers: {
             "Content-Type": "application/json"
-          }
         }
+      }
       );
-
       if (result.data.clientSecret) {
         commit("setClientSecret", result.data.clientSecret);
       }
-    } catch (e) {
+    } catch (error) {
       console.log("error", e);
     }
   }

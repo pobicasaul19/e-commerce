@@ -17,7 +17,6 @@
         <h4>Subcribe to our Newsletter:</h4>
         <p>Get 10% off on your first order by Subcribing to our newsletter. You'll receive emails on updates, limited offers and new release!</p>
         <input type="text" />
-
       </ul>
     </section>
   </template>
@@ -32,20 +31,47 @@
     padding: 40px 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    padding: 40px;
   }
   
   ul {
     list-style: none;
     padding-left: 0;
   }
+
+  ul p {
+      margin: 10px 0;
+    }
   
   input {
     width: 100%;
   }
-  
-  @media screen and (min-width: 850px) {
+
+  @media screen and (max-width: 699px) {
     .section {
-      padding: 40px !important;
+      grid-template-columns: repeat(1, 1fr);
+      margin: 0 8% !important;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+    }
+    
+  }
+  
+  @media screen and (max-width: 850px) {
+    .section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section ul:last-child {
+      grid-column: 1 / 3;
+      text-align: justify;
+      margin-right: 10%;
     }
   }
   </style>

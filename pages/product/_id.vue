@@ -1,5 +1,6 @@
 <template>
   <div>
+    <app-nav />
     <section class="item-contain">
       <section class="img">
         <img :src="`/products/${product.img}`" />
@@ -55,6 +56,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum laborum reprehenderit perspiciatis voluptas quibusdam corrupti delectus, fugiat adipisci, accusamus quasi culpa minima exercitationem labore vel nesciunt. Dolore aspernatur eveniet voluptatem!</p>
     </div>
     <app-featured-products />
+    <app-footer />
   </div>
 </template>
 
@@ -62,11 +64,15 @@
 import { mapState } from "vuex";
 import StarRating from "vue-star-rating/src/star-rating.vue";
 import AppFeaturedProductsVue from "@/components/AppFeaturedProducts.vue";
+import AppNav from "@/components/AppNav.vue";
+import AppFooter from "@/components/AppFooter.vue";
 
 export default {
     components: {
         AppFeaturedProductsVue,
         StarRating,
+        AppNav,
+
     },
     data() {
         return {
@@ -104,7 +110,7 @@ export default {
 
 <style lang="scss" scoped>
 .item-contain {
-  margin-left: 8%;
+  margin: 4% 8%;
   width: 80%;
   display: grid;
   justify-content: space-around;
@@ -152,6 +158,11 @@ select {
 
 .size-required-message {
   color: red;
+}
+
+.review {
+  margin: 0 8%;
+  width: 80%;
 }
 
 @media screen and (max-width: 650px) {

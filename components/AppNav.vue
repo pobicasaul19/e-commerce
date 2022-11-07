@@ -16,7 +16,7 @@
             <nuxt-link to="/men">Men</nuxt-link>
           </li>
           <li>
-            <div class="carttotal" v-if="cartCount > 0">{{ cartCount }}</div>
+            <div class="carttotal" v-if="cartCount">{{ cartCount }}</div>
             <nuxt-link to="/cart">Cart</nuxt-link>
           </li>
         </ul>
@@ -25,11 +25,11 @@
   </template>
   
   <script>
-  import { mapState } from "vuex";
+  import { mapGetters } from "vuex";
   
   export default {
     computed: {
-      ...mapState(["cartCount"]),
+      ...mapGetters(["cartCount"]),
     },
   };
   </script>
@@ -98,13 +98,17 @@
   }
   
   @media (max-width: 850px) {
-    h1 {
+     header h1 {
       margin: 0;
+      font-size: 2.5em;
     }
     nav ul li {
-      padding: 0 5px !important;
+      padding: 5px 5px !important;
       border-left: none !important;
       border-right: none !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   </style>

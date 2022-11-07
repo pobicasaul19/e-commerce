@@ -27,15 +27,16 @@
   <style lang="scss" scoped>
   .textlockup {
     display: grid;
-    grid-template-columns: 50px 100px 1fr;
+    grid-template-columns: 150px 250px 1fr;
     grid-template-rows: 50px 50px 100px 20px 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     .new {
       grid-area: 1 / 1 / 5 / 4;
-      font-size: 23vmin;
+      font-size: 25vmin;
       color: #efefef;
       text-transform: uppercase;
+      margin-left: 5%;
     }
     .sale {
       grid-area: 2 / 2 / 3 / 4;
@@ -60,15 +61,23 @@
       max-width: 950px;
       grid-area: 1 / 3 / 6 / 4;
       img {
-        width: 95%;
+        width: 100%;
       }
     }
   }
   
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 699px) {
     .textlockup {
       grid-template-columns: 25px 25px 1fr !important;
       grid-template-rows: 6vmin 5.5vmin 10vmin 20px 1fr !important;
     }
   }
+
+  @media screen and (min-width: 700px) and (max-width: 999px) {
+    .textlockup {
+      grid-template-columns: 50px 50px 1fr !important;
+      grid-template-rows: 10vmin 10vmin 15vmin 20px 1fr !important;
+    }
+  }
+
   </style>

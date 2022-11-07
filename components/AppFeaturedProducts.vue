@@ -32,8 +32,11 @@ section {
 }
 
 .featureditems {
-  width: 100%;
-  margin: 20px 0 70px;
+  max-width: 1000px;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
   .item {
     border-radius: 15px;
     background: #ffffff;
@@ -44,9 +47,9 @@ section {
     align-self: center;
     text-align: center;
     &:hover {
-    transform: scale(1.1);
-    transition: all 0.5s ease;
-  }
+      transform: scale(1.1);
+      transition: all 0.5s ease;
+    }
   }
 }
 
@@ -82,30 +85,28 @@ h2 span:after {
 }
 
 @media screen and (max-width: 699px) {
+  section {
+    margin: 0 1rem !important;
+  }
   .featureditems {
-    width: 83vw;
-    margin-left: 5vw;
+    width: 60%;
+    display: block;
     div {
       padding: 10px 20px;
-      margin-bottom: 10px;
+      margin-bottom: 40px;
     }
   }
 
   img {
-    width: initial;
+    width: 100%;
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (max-width: 860px) {
   .featureditems {
-    display: grid;
+    max-width: 700px !important;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 0px;
-    div {
-      padding: 40px 50px;
-    }
+    gap: 1rem;
   }
 
   img {

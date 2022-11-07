@@ -1,5 +1,6 @@
 <template>
 <div>
+  <app-nav />
   <app-textlockup />
   <app-sale-boxes />
   <app-textlockup>
@@ -12,6 +13,7 @@
     <template v-slot:details>All Acessories</template>
   </app-textlockup>
   <app-featured-products />
+  <app-footer />
 </div>
 </template>
 
@@ -19,12 +21,16 @@
 import AppSaleBoxes from '../components/AppSaleBoxes.vue';
 import AppTextlockupVue from '../components/AppTextlockup.vue';
 import AppFeaturedProductsVue from '../components/AppFeaturedProducts.vue';
+import AppFooter from "../components/AppFooter.vue";
+import AppNav from "../components/AppNav.vue";
 
 export default {
   components: {
     AppTextlockupVue,
     AppSaleBoxes,
     AppFeaturedProductsVue,
+    AppFooter,
+    AppNav
   }
 }
 </script>

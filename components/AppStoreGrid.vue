@@ -87,21 +87,24 @@ export default {
   align-content: center;
   align-items: center;
   img {
-    width: 100%;
-    &:hover {
-      transform: scale(1.1);
-      transition: all 0.5s ease;
-    }
+    width: 90%;
   }
 }
 
 .item {
-  max-height: 500px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 30px 10px;
+  // border-radius: 15px;
+  //   background: #ffffff;
+  //   box-shadow: 9px 9px 29px #848484, -9px -9px 29px #ffffff;
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.5s ease;
+    }
 }
 
 aside {

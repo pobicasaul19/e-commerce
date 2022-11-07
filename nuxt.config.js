@@ -11,6 +11,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'E-Commerce',
+    script: [{ src: 'https://js.stripe.com/v3/' },],
     htmlAttrs: {
       lang: 'en'
     },
@@ -54,7 +55,6 @@ export default {
   ],
 
   layouts: [
-    { name: 'default', path: '@/layouts/default.vue' },
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

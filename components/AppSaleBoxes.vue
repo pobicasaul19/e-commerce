@@ -38,7 +38,7 @@
   .boxes {
     margin: 70px 0;
     div {
-      border: 1px solid #ddd;
+      border: 2px solid #ddd;
       min-height: 150px;
       justify-self: center;
       align-self: center;
@@ -77,7 +77,7 @@
   @media screen and (max-width: 699px) {
     .boxes {
       width: 81vw;
-      margin-left: 5vw;
+      margin-left: 10vw;
       div {
         padding: 10px 20px;
         margin-bottom: 10px;

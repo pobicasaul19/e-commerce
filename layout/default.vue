@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <app-nav />
     <main>
@@ -52,8 +52,8 @@ main {
 @media screen and (min-width: 1000px) {
   main {
     padding: 40px;
-    width: 80vw;
+    width: 90vw;
     margin-left: 7vw;
   }
 }
-</style>
+</style> -->
