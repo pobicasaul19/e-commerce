@@ -180,4 +180,43 @@ aside {
   }
 
 }
+
+@media screen and (min-width: 700px) and (max-width: 999px) {
+  .content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: 1fr;
+  }
+
+  .item {
+    margin: 10px 10px;
+
+    h3 {
+      font-size: 15px;
+    }
+
+    h4 {
+      font-size: 15px;
+    }
+
+    .multi-item {
+      font-size: 15px !important;
+    }
+  }
+
+  .img-contain {
+    max-height: 150px;
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .storegrid {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
+  
 </style>
