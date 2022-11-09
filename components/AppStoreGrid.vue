@@ -1,26 +1,5 @@
 <template>
   <div class="storegrid">
-    <transition-group name="items" tag="section" class="content">
-      <div v-for="item in filteredprice" :key="item.id" class="item">
-        <div class="img-contain">
-          <Nuxt-link :to="`product/${item.id}`">
-            <img :src="`/products/${item.img}`" />
-          </Nuxt-link>
-        </div>
-        <star-rating
-          :rating="item.rating"
-          :star-size="15"
-          :show-rating="false"
-          active-color="#000"
-          style="margin: 5px 0"
-        ></star-rating>
-        <h3>{{ item.name }}</h3>
-        <h4 class="price">{{ item.price }}</h4>
-        <Nuxt-link :to="`product/${item.id}`">
-          <button class="multi-item">View Item</button>
-        </Nuxt-link>
-      </div>
-    </transition-group>
     <aside>
       <h3>Special Sale</h3>
       <p>
@@ -40,11 +19,27 @@
         v-model="pricerange"
         :min="min"
         :max="max"
-        step="0.2"
+        step="0.1"
       />
       <span class="min">${{ min }}</span>
       <span class="max">${{ max }}</span> -->
     </aside>
+    <transition-group name="items" tag="section" class="content">
+      <div v-for="item in filteredprice" :key="item.id" class="item">
+        <div class="img-contain">
+          <Nuxt-link :to="`product/${item.id}`">
+            <img :src="`/products/${item.img}`" />
+          </Nuxt-link>
+        </div>
+        <star-rating :rating="item.rating" :star-size="15" :show-rating="false" active-color="#000"
+          style="margin: 5px 0"></star-rating>
+        <h3>{{ item.name }}</h3>
+        <h4 class="price">{{ item.price }}</h4>
+        <Nuxt-link :to="`product/${item.id}`">
+          <button class="multi-item">View Item</button>
+        </Nuxt-link>
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -52,6 +47,9 @@
 import StarRating from "vue-star-rating/src/star-rating.vue";
 
 export default {
+  components: {
+    StarRating,
+  },
   props: {
     data: {
       required: true,
@@ -69,9 +67,6 @@ export default {
       return this.data.filter(el => el.price < this.pricerange);
     },
   },
-  components: {
-    StarRating,
-  }
 };
 </script>
 
@@ -79,6 +74,9 @@ export default {
 .content {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 20px;
 }
 
 .img-contain {
@@ -86,6 +84,7 @@ export default {
   display: flex;
   align-content: center;
   align-items: center;
+
   img {
     width: 90%;
   }
@@ -98,22 +97,86 @@ export default {
   align-items: center;
   flex-direction: column;
   margin: 30px 10px;
+
   // border-radius: 15px;
   //   background: #ffffff;
   //   box-shadow: 9px 9px 29px #848484, -9px -9px 29px #ffffff;
-    &:hover {
-      transform: scale(1.1);
-      transition: all 0.5s ease;
-    }
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+  }
 }
 
 aside {
   height: 100%;
   width: 100%;
+  h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  p {
+    margin: 10px auto;
+    text-align: justify;
+    max-width: 500px;
+  }
 }
 
 .max {
   display: inline-block;
-  float: right;
+  // float: right;
+}
+
+@media screen and (max-width: 699px) {
+
+  aside {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      text-align: center;
+    }
+    p {
+      text-align: justify;
+      letter-spacing: 0px;
+      line-height: 1.2;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: 1fr;
+  }
+
+  .item {
+    margin: 10px 10px;
+
+    h3 {
+      font-size: 10px;
+    }
+
+    h4 {
+      font-size: 10px;
+    }
+
+    .multi-item {
+      font-size: 10px !important;
+    }
+  }
+
+  .img-contain {
+    max-height: 150px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .storegrid {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
 }
 </style>

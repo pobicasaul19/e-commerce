@@ -106,9 +106,25 @@
       padding: 5px 5px !important;
       border-left: none !important;
       border-right: none !important;
-      display: flex;
       justify-content: center;
       align-items: center;
+      display: flex;
     }
+
+    .carttotal {
+    position: absolute;
+    border-radius: 1000px;
+    background: #000;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 3px;
+    top: -5px;
+    right: 0px;
+    left: 90px;
+    width: 20px;
+    text-align: center;
+    height: 20px;
+    font-weight: bold;
+  }
   }
   </style>

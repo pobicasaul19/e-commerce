@@ -7,7 +7,7 @@
         <app-footer-link />
         <div class="pobistuff">
             <p>
-                This E-Commerce project is my sample work, and made by Pobi Casaul.
+                This E-Commerce project is my sample work, and made by <span>Pobi Casaul. </span> 
             </p>
         </div>
     </footer>
@@ -61,5 +61,11 @@ a:visited,
 a:active {
   color: #c4c3ec;
   font-weight: bold;
+}
+
+@media screen and (max-width: 850px) {
+ span {
+    display: block;
+ }
 }
 </style>

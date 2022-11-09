@@ -41,6 +41,9 @@
             <button class="button purchase" @click="cartAdd">Add to Cart</button>
         </p>
       </section>
+      <app-toast v-if="cartSummitted" class="toast">Order submmited <br>
+      Check out more <nuxt-link to="/collections" class="link">products!</nuxt-link>
+      </app-toast>
     </section>
     <hr />
     <div class="review">
@@ -66,21 +69,24 @@ import StarRating from "vue-star-rating/src/star-rating.vue";
 import AppFeaturedProductsVue from "@/components/AppFeaturedProducts.vue";
 import AppNav from "@/components/AppNav.vue";
 import AppFooter from "@/components/AppFooter.vue";
+import AppToast from "@/components/AppToast.vue";
 
 export default {
     components: {
         AppFeaturedProductsVue,
         StarRating,
         AppNav,
-        AppFooter
+        AppFooter,
+        AppToast
     },
     data() {
         return {
             id: this.$route.params.id,
             quantity: 1,
-            size: null,
-            showSizeRequiredMessage: false,
-            tempcart: []
+            // size: null,
+            // showSizeRequiredMessage: false,
+            tempcart: [],
+            cartSummitted: false
         };
     },
     computed: {
@@ -91,10 +97,11 @@ export default {
     },
     methods: {
         cartAdd() {
-            if (this.product.sizes && !this.size) {
-                this.showSizeRequiredMessage = true;
-                return;
-            }
+            // if (this.product.sizes && !this.size) {
+            //     this.showSizeRequiredMessage = true;
+            //     return;
+            // }
+            this.cartSummitted = true;
             let item = this.product;
             item = {
                 ...item,
@@ -120,6 +127,23 @@ export default {
 .product-options {
   display: flex;
   align-items: center;
+}
+
+  .toast {
+    position: fixed;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    transition: all 0.5s ease-in;
+    .link {
+      color: #000;
+      font-weight: 900;
+    }
 }
 
 input,
@@ -165,14 +189,15 @@ select {
   width: 80%;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 550px) {
   .img img {
     width: 100%;
+    object-fit: contain;
   }
 
   .item-contain {
-    margin-left: 0 !important;
-    width: 95% !important;
+    grid-template-columns: 1fr;
+
   }
 
   .review {

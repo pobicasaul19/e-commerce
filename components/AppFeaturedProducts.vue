@@ -12,15 +12,29 @@
           <button class="multi-item">View Item</button>
         </Nuxt-link>
       </div>
+      <div class="item1" v-for="product in featuredProducts1" :key="product.id">
+        <img :src="`/products/${product.img}`" />
+        <h3>{{ product.name }}</h3>
+        <h4>{{ product.price }}</h4>
+        <Nuxt-link :to="`/product/${product.id}`">
+          <button class="multi-item">View Item</button>
+        </Nuxt-link>
+      </div>
     </div>
   </section>
+
 </template>
+
+
 
 <script>
 export default {
   computed: {
     featuredProducts() {
       return this.$store.getters.featuredProducts;
+    },
+    featuredProducts1() {
+      return this.$store.getters.featuredProducts1;
     },
   },
 };
@@ -46,6 +60,22 @@ section {
     justify-self: center;
     align-self: center;
     text-align: center;
+    &:hover {
+      transform: scale(1.1);
+      transition: all 0.5s ease;
+    }
+  }
+
+  .item1 {
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 9px 9px 29px #848484, -9px -9px 29px #ffffff;
+    padding: 10px 20px 30px;
+    min-height: 150px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    margin-top: 25px;
     &:hover {
       transform: scale(1.1);
       transition: all 0.5s ease;
@@ -85,21 +115,38 @@ h2 span:after {
 }
 
 @media screen and (max-width: 699px) {
-  section {
-    margin: 0 1rem !important;
-  }
+
   .featureditems {
-    width: 60%;
-    display: block;
+    grid-template-columns: repeat(2, 1fr) !important;
     div {
       padding: 10px 20px;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
+    }
+    .item {
+      margin: 0px;
+    }
+    .item1 {
+      margin-top: 0px;
+      margin: 0px;
     }
   }
-
   img {
     width: 100%;
   }
+
+
+  h3 {
+    font-size: 13px;
+  }
+
+  h4 {
+    font-size: 13px;
+  }
+
+  .multi-item {
+    font-size: 10px !important;
+  }
+
 }
 
 @media screen and (max-width: 860px) {

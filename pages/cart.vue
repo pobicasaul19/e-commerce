@@ -20,15 +20,12 @@
             </button>
         </section>
 
-        <section v-else-if="cartUIStatus === 'failure'">
+        <!-- <section v-else-if="cartUIStatus === 'failure'">
             <p>Oops, something went wrong. Redirecting you to your cart to try again.</p>
-        </section>
-
-
-        <app-sale-boxes />
-
-        <app-footer />
+        </section> -->
         
+        <app-sale-boxes />
+        <app-footer />
     </div>
 </template>
 
@@ -37,7 +34,7 @@ import AppCartDisplay from '../components/AppCartDisplay.vue';
 import AppCartSteps from '../components/AppCartSteps.vue';
 import AppSaleBoxes from '../components/AppSaleBoxes.vue';
 import AppFooter from "../components/AppFooter.vue";
-import AppNav from "../components/AppNav.vue";
+import AppNav from "../components/AppNav.vue";  
 import { mapState } from 'vuex';
 export default {
     components: {

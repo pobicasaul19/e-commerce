@@ -17,7 +17,7 @@
               class="product-img"
             />
             <h3 class="product-name">{{ item.name }}</h3>
-            <h5 class="product-size" v-if="item.size">Size: {{ item.size }}</h5>
+            <!-- <h5 class="product-size" v-if="item.size">Size: {{ item.size }}</h5> -->
           </td>
           <td>
             <h4 class="price">{{ item.price }}</h4>
@@ -29,7 +29,7 @@
             <strong>{{ item.quantity }}</strong>
             <button @click="addToCart(item)" class="quantity-adjust">+</button>
           </td>
-          <td>{{ (item.price * item.quantity) }}</td>
+          <td>{{ cartTotal }}</td>
           <td>
             <button @click="removeAllFromCart(item)" class="delete-product">
               x
@@ -62,7 +62,7 @@
     <section class="center">
       <p>Your cart is empty, fill it up!</p>
       <button class="pay-with-stripe">
-        <Nuxt-link exact to="/"> Back to Store </Nuxt-link>
+        <Nuxt-link exact to="/collections"> Back to Store </Nuxt-link>
       </button>
     </section>
   </div>
@@ -70,7 +70,7 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import AppCard from '../components/AppCard.vue';
+import AppCard from "../components/AppCard.vue";
 export default {
   components: {
     AppCard,
@@ -78,6 +78,11 @@ export default {
   computed: {
     ...mapState(["cart"]),
     ...mapGetters(["cartCount", "cartTotal"]),
+
+    combinePrice() {
+      let total = this.quantity * this.price;
+      return total;
+    },
   },
   methods: {
     addToCart(item) {
@@ -94,6 +99,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+section {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
 .product-img {
   float: left;
   margin-right: 15px;

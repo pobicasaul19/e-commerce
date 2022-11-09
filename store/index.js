@@ -9,7 +9,8 @@ export const state = () => ({
 });
 
 export const getters = {
-  featuredProducts: state => state.storedata.slice(0, 3),
+  featuredProducts: state => state.storedata.slice(22, 25),
+  featuredProducts1: state => state.storedata.slice(25, 28),
   women: state => state.storedata.filter(el => el.gender === "Female"),
   men: state => state.storedata.filter(el => el.gender === "Male"),
   cartCount: state => {
@@ -18,18 +19,18 @@ export const getters = {
   },
   cartTotal: state => {
     if (!state.cart.length) return 0;
-    return state.cart.reduce((ac, next) => ac + next.quantity * next.price, 0);
+    return state.cart.reduce((acc, next) => acc + next.price * next.quantity, 0);
   },
   cartItems: state => {
     if (!state.cart.length) return [];
     return state.cart.map(item => {
       return {
         id: item.id,
-        quantity: item.quantity
+        quantity: item.quantity,
       };
     });
   },
-  clientSecret: state => state.clientSecret
+  // clientSecret: state => state.clientSecret
 };
 
 export const mutations = {
@@ -68,7 +69,7 @@ export const action = {
   async createPaymentIntent({ gatters, commit}) {
     try {
       const result = await axios.post(
-        "http://localhost:3000/api/create-payment-intent",
+        "https://us-central1-nuxt-ecommerce-1.cloudfunctions.net/create-payment-intent",
         {
           items: gatters.cartItems
         },
