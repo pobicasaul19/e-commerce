@@ -139,6 +139,7 @@ aside {
       text-align: justify;
       letter-spacing: 0px;
       line-height: 1.2;
+      margin: 0 20px !important;
     }
   }
 
