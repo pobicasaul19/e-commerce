@@ -1,4 +1,4 @@
-import axios from '@nuxtjs/axios';
+import axios from "axios";
 import data from "../static/storedata.json";
 
 export const state = () => ({
@@ -19,7 +19,7 @@ export const getters = {
   },
   cartTotal: state => {
     if (!state.cart.length) return 0;
-    return state.cart.reduce((acc, next) => acc + next.price * next.quantity, 0);
+    return state.cart.reduce((acc, next) => acc + next.quantity * next.price, 0);
   },
   cartItems: state => {
     if (!state.cart.length) return [];
@@ -30,7 +30,8 @@ export const getters = {
       };
     });
   },
-  // clientSecret: state => state.clientSecret
+  // clientSecret: state => state.clientSecret,
+  client_secret: state => state.client_secret,
 };
 
 export const mutations = {
@@ -48,7 +49,7 @@ export const mutations = {
       : state.cart.push(payload)
   },
    setClientSecret: (state, payload) => {
-    state.clientSecret = payload;
+    state.client_secret = payload;
    },
   addOneToCart: (state, payload) => {
     let itemfound = state.cart.find(el => el.id === payload.id)
@@ -69,7 +70,7 @@ export const action = {
   async createPaymentIntent({ gatters, commit}) {
     try {
       const result = await axios.post(
-        "https://us-central1-nuxt-ecommerce-1.cloudfunctions.net/create-payment-intent",
+        "https://thestore-ph.netlify.app/.netlify/functions/create-payment-intent",
         {
           items: gatters.cartItems
         },
@@ -79,8 +80,8 @@ export const action = {
         }
       }
       );
-      if (result.data.clientSecret) {
-        commit("setClientSecret", result.data.clientSecret);
+      if (result.data.client_secret) {
+        commit("setClientSecret", result.data.client_secret);
       }
     } catch (error) {
       console.log("error", e);
