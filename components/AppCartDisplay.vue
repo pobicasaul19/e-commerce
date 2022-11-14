@@ -2,7 +2,7 @@
   <div>
     <section v-if="cartCount > 0">
       <table>
-        <tr>
+        <tr class="table">
           <th>Porduct</th>
           <th>Price</th>
           <th>Quantity</th>
@@ -29,7 +29,7 @@
             <strong>{{ item.quantity }}</strong>
             <button @click="addToCart(item)" class="quantity-adjust">+</button>
           </td>
-          <td>{{ cartTotal }}</td>
+          <td>{{ (item.quantity * item.price) }}</td>
           <td>
             <button @click="removeAllFromCart(item)" class="delete-product">
               x
@@ -59,7 +59,7 @@
       </section>
     </section>
 
-    <section class="center">
+    <section v-else class="center">
       <p>Your cart is empty, fill it up!</p>
       <button class="pay-with-stripe">
         <Nuxt-link exact to="/collections"> Back to Store </Nuxt-link>
@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     ...mapState(["cart"]),
-    ...mapGetters(["cartCount", "cartTotal"]),
+    ...mapGetters(['cartCount', 'cartTotal']),
 
     combinePrice() {
       let total = this.quantity * this.price;
@@ -202,6 +202,7 @@ button a {
 }
 
 @media screen and (max-width: 699px) {
+
   .payment {
     width: 94%;
     margin-left: 2%;

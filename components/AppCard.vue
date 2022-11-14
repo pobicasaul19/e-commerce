@@ -32,6 +32,8 @@
         :stripe-key="stripeKey"
         :instance-options="instanceOptions"
         :elements-options="elementsOptions"
+        :class="{ complete }"
+        @change="complete = $event.complete"
         #default="{ elements }"
         ref="elms"
         class="stripe-card"
@@ -45,12 +47,16 @@
       </StripeElements>
 
       <small class="card-error">{{ error }}</small>
-      <button class="pay-with-stripe button" @click="pay">
+      <button
+        class="pay-with-stripe button"
+        @click="pay"
+        :disabled="!complete || !stripEmail"
+      >
         Pay with credit or debit card
       </button>
     </div>
     <div v-else class="statussubmit">
-      <div v-if="cartUIStatus">
+      <div v-if="cartUIStatus === 'failure'">
         <h3>Oh No!</h3>
         <p>Something went wrong!</p>
         <button @click="clearCart">Please try again</button>
@@ -65,7 +71,11 @@
 
 <script>
 import { mapState } from "vuex";
-import { StripeElements, StripeElement, handleCardPayment } from "vue-stripe-elements-plus";
+import {
+  StripeElements,
+  StripeElement,
+  handleCardPayment,
+} from "vue-stripe-elements-plus";
 
 export default {
   name: "AppCard",
@@ -82,6 +92,9 @@ export default {
   },
   data() {
     return {
+      stripEmail: "",
+      error: "",
+      complete: false,
       stripeKey: "pk_test_8ssZgwB2PiH0ajJksD2gVbsG00u7Y3IDPv", // test key, don't hardcode
       instanceOptions: {
         // https://stripe.com/docs/js/initializing#init_stripe_js-options
@@ -101,37 +114,27 @@ export default {
   },
   methods: {
     pay() {
-      // confirms the payment and will automatically display a
-      // pop-up modal if the purchase requires authentication
-      this.loading = true;
-      handleCardPayment(this.$store.getters.paymentIntent.client_secret,
-        this.$refs.card,
-        {
-          payment_method_data: {
-            billing_details: {
-              email: this.stripEmail,
-            },
+      this.$store.dispatch("setCartUIStatus", "loading");
+      handleCardPayment(this.$refs.elms.$refs.card, {
+        payment_method: {
+          card: this.$refs.elms.$refs.card,
+          billing_details: {
+            email: this.stripEmail,
           },
-        }).then(result => {
-        this.loading = false;
-        if (result.error) {
-          // show the error to the customer, let them try to pay again
-          this.error = result.error.message;
-          setTimeout(() => (this.error = ""), 3000);
-        } else if (
-          result.paymentIntent &&
-          result.paymentIntent.status === "succeeded"
-        ) {
-          // payment succeeded! show a success message
-          // there's always a chance your customer closes the browser after the payment process and before this code runs so
-          // we will use the webhook in handle-payment-succeeded for any business-critical post-payment actions
-          this.$store.commit("updateCartUI", "success");
-          setTimeout(this.clearCart, 5000);
-        } else {
-          this.error = "Some unknown error occured";
-          setTimeout(() => (this.error = ""), 3000);
-        }
-      });
+        },
+      })
+        .then((result) => {
+          if (result.error) {
+            this.error = result.error.message;
+            this.$store.dispatch("setCartUIStatus", "error");
+          } else {
+            this.$store.dispatch("setCartUIStatus", "success");
+          }
+        })
+        .catch((error) => {
+          this.error = error.message;
+          this.$store.dispatch("setCartUIStatus", "error");
+        });
     },
   },
   clearCart() {
@@ -202,6 +205,11 @@ export default {
       background: #000;
       color: #fff;
     }
+    // &:disabled {
+    //   background: #ccc;
+    //   color: #000;
+    //   cursor: not-allowed;
+    // }
   }
   .stripe-card {
     border: 1px solid #ccc;

@@ -1,11 +1,11 @@
-import axios from "axios";
+import axios from "@nuxtjs/axios";
 import data from "../static/storedata.json";
 
 export const state = () => ({
   cartUIStatus: "idle",
   storedata: data,
   cart: [],
-  clientSecret: "" 
+  client_secret: "" 
 });
 
 export const getters = {
@@ -27,6 +27,7 @@ export const getters = {
       return {
         id: item.id,
         quantity: item.quantity,
+        price: item.price,
       };
     });
   },
