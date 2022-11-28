@@ -26,60 +26,6 @@
   "price": "$142.19",
   "img": "3.jpg"
 }, {
-  "id": "e0a5012b16762791117175f215bf343a",
-  "color": "Indigo",
-  "description": "Removal of Drainage Device from Right Wrist Joint, Percutaneous Endoscopic Approach",
-  "gender": "Male",
-  "name": "Lalo Larchiere",
-  "rating": 5,
-  "price": "$155.56",
-  "img": "4.jpg"
-}, {
-  "id": "2882fa015c61bc78ef464f6754e4b5c7",
-  "color": "Maroon",
-  "description": "Restriction of Right Internal Iliac Artery with Intraluminal Device, Percutaneous Endoscopic Approach",
-  "gender": "Male",
-  "name": "Isidoro Freckingham",
-  "rating": 5,
-  "price": "$137.48",
-  "img": "5.png"
-}, {
-  "id": "cfa027d6c6dcfac3f9d4050ec72f4ea1",
-  "color": "Mauv",
-  "description": "Destruction of Appendix, Percutaneous Endoscopic Approach",
-  "gender": "Male",
-  "name": "Amby Bruyns",
-  "rating": 4,
-  "price": "$130.42",
-    "img": "6.png"
-}, {
-  "id": "f5b290b8773cf919ffd86ce478d0ea15",
-  "color": "Blue",
-  "description": "Insertion of Monitoring Device into Brain, Percutaneous Endoscopic Approach",
-  "gender": "Male",
-  "name": "Lew Dursley",
-  "rating": 3,
-  "price": "$40.21",
-    "img": "7.png"
-}, {
-  "id": "95db1fbdcff8b8b140cda76263518144",
-  "color": "Indigo",
-  "description": "Extirpation of Matter from Right Lacrimal Duct, Via Natural or Artificial Opening Endoscopic",
-  "gender": "Female",
-  "name": "Micky Rizzardi",
-  "rating": 3,
-  "price": "$76.45",
-    "img": "8.png"
-}, {
-  "id": "e004f377852d96fc85a21657e3ee656e",
-  "color": "Maroon",
-  "description": "Removal of Nonautologous Tissue Substitute from Right Wrist Joint, Open Approach",
-  "gender": "Female",
-  "name": "Berny Hornig",
-  "rating": 5,
-  "price": "$141.25",
-    "img": "9.png"
-}, {
   "id": "4ea31c53d824ba8c691fe5f7ad030b4c",
   "color": "Maroon",
   "description": "Drainage of Left Lower Lobe Bronchus with Drainage Device, Via Natural or Artificial Opening",
@@ -88,51 +34,6 @@
   "rating": 4,
   "price": "$170.24",
   "img": "10.jpg"
-}, {
-  "id": "41852f4bf0bdf2befb324045c2835a67",
-  "color": "Green",
-  "description": "Fusion of Left Metacarpocarpal Joint, Open Approach",
-  "gender": "Female",
-  "name": "Celina Garfitt",
-  "rating": 5,
-  "price": "$141.36",
-    "img": "11.png"
-}, {
-  "id": "b984badc911e7816885223344ec01c66",
-  "color": "Puce",
-  "description": "Supplement Rectum with Nonautologous Tissue Substitute, Via Natural or Artificial Opening",
-  "gender": "Female",
-  "name": "Correna Collopy",
-  "rating": 3,
-  "price": "$194.06",
-    "img": "12.png"
-}, {
-  "id": "77e6b635d1b7e70ebaa181fa540ec6b2",
-  "color": "Yellow",
-  "description": "Revision of Infusion Device in Upper Intestinal Tract, Via Natural or Artificial Opening Endoscopic",
-  "gender": "Female",
-  "name": "Rozele Leathart",
-  "rating": 3,
-  "price": "$184.62",
-  "img": "13.png"
-}, {
-  "id": "104cc5eb55dbd458e98080bf2d205ec3",
-  "color": "Green",
-  "description": "Drainage of Larynx with Drainage Device, Via Natural or Artificial Opening",
-  "gender": "Female",
-  "name": "Trula Kenefick",
-  "rating": 5,
-  "price": "$103.62",
-  "img": "14.png"
-}, {
-  "id": "dc89dc671f7b1a56aa17850b51d3bcdb",
-  "color": "Green",
-  "description": "Transfer Left Neck Muscle, Open Approach",
-  "gender": "Genderqueer",
-  "name": "Courtnay Martugin",
-  "rating": 5,
-  "price": "$191.40",
-  "img": "15.png"
 }, {
   "id": "13048750e5558e4683edb03d2e9164a6",
   "color": "Pink",
@@ -143,15 +44,6 @@
   "price": "$100.66",
   "img": "16.jpg"
 }, {
-  "id": "c2caf48ef380801a6b619059e2adb199",
-  "color": "Puce",
-  "description": "Removal of Nonautologous Tissue Substitute from Larynx, Via Natural or Artificial Opening Endoscopic",
-  "gender": "Male",
-  "name": "Ward Gier",
-  "rating": 4,
-  "price": "$51.03",
-    "img": "17.png"
-}, {
   "id": "6ea09eb6e2ef2d1aac867a66515a113b",
   "color": "Pink",
   "description": "Introduction of Radioactive Substance into Bones, Percutaneous Approach",
@@ -161,14 +53,14 @@
   "price": "$101.15",
   "img": "18.jpg"
 }, {
-  "id": "26baeeb2bf325d342fe981f1e696f342",
-  "color": "Teal",
-  "description": "Change Splint on Neck",
+  "id": "2882fa015c61bc78ef464f6754e4b5c7",
+  "color": "Maroon",
+  "description": "Restriction of Right Internal Iliac Artery with Intraluminal Device, Percutaneous Endoscopic Approach",
   "gender": "Male",
-  "name": "Cecilius Tebbs",
-  "rating": 4,
-  "price": "$80.10",
-    "img": "19.png"
+  "name": "Isidoro Freckingham",
+  "rating": 5,
+  "price": "$137.48",
+  "img": "5.png"
 }, {
   "id": "27c3603664261f7f001be387e2788915",
   "color": "Mauv",
