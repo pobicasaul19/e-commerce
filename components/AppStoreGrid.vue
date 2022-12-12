@@ -34,7 +34,7 @@
         <star-rating :rating="item.rating" :star-size="15" :show-rating="false" active-color="#000"
           style="margin: 5px 0"></star-rating>
         <h3>{{ item.name }}</h3>
-        <h4 class="price">{{ item.price }}</h4>
+        <h4 class="price">${{ item.price }}</h4>
         <Nuxt-link :to="`product/${item.id}`">
           <button class="multi-item">View Item</button>
         </Nuxt-link>
@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script>
+<script >
 import StarRating from "vue-star-rating/src/star-rating.vue";
 
 export default {

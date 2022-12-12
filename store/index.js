@@ -15,11 +15,17 @@ export const getters = {
   men: state => state.storedata.filter(el => el.gender === "Male"),
   cartCount: state => {
     if (!state.cart.length) return 0;
-    return state.cart.reduce((acc, next) => acc + next.quantity, 0);
+    return state.cart.reduce((ac, next) => ac + next.quantity, 0);
   },
   cartTotal: state => {
-    if (!state.cart.length) return 0;
-    return state.cart.reduce((acc, next) => acc + next.quantity * next.price, 0);
+    if(!state.cart.length) return 0;
+    return state.cart.reduce((ac, next) => {
+      if (typeof next.quantity === 'number' && typeof next.price === 'number') {
+        return ac + next.quantity * next.price;
+      } else {
+        return ac;
+      }
+    }, 0);
   },
   cartItems: state => {
     if (!state.cart.length) return [];
@@ -27,7 +33,6 @@ export const getters = {
       return {
         id: item.id,
         quantity: item.quantity,
-        price: item.price,
       };
     });
   },

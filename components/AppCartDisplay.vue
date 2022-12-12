@@ -20,7 +20,7 @@
             <!-- <h5 class="product-size" v-if="item.size">Size: {{ item.size }}</h5> -->
           </td>
           <td>
-            <h4 class="price">{{ item.price }}</h4>
+            <h4 class="price">${{ item.price }} </h4>
           </td>
           <td>
             <button @click="removeOneFromCart(item)" class="quantity-adjust">
@@ -29,7 +29,7 @@
             <strong>{{ item.quantity }}</strong>
             <button @click="addToCart(item)" class="quantity-adjust">+</button>
           </td>
-          <td>{{ (item.quantity * item.price) }}</td>
+          <td>${{ item.quantity * item.price }}</td>
           <td>
             <button @click="removeAllFromCart(item)" class="delete-product">
               x
@@ -50,10 +50,10 @@
           </div>
           <div class="num">
             <p>
-              <strong>{{ cartTotal }}</strong>
+              <strong>${{ cartTotal }}</strong>
             </p>
             <p>Free Shipping</p>
-            <p class="golden">{{ cartTotal }}</p>
+            <p class="golden">${{ cartTotal }}</p>
           </div>
         </div>
       </section>
@@ -71,6 +71,7 @@
 <script>
 import { mapGetters, mapState } from "vuex";
 import AppCard from "../components/AppCard.vue";
+
 export default {
   components: {
     AppCard,
@@ -96,6 +97,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style lang="scss" scoped>

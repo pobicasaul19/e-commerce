@@ -7,7 +7,7 @@
       <div class="item" v-for="product in featuredProducts" :key="product.id">
         <img :src="`/products/${product.img}`" />
         <h3>{{ product.name }}</h3>
-        <h4>{{ product.price }}</h4>
+        <h4>${{ product.price }}</h4>
         <Nuxt-link :to="`/product/${product.id}`">
           <button class="multi-item">View Item</button>
         </Nuxt-link>
@@ -15,7 +15,7 @@
       <div class="item1" v-for="product in featuredProducts1" :key="product.id">
         <img :src="`/products/${product.img}`" />
         <h3>{{ product.name }}</h3>
-        <h4>{{ product.price }}</h4>
+        <h4>${{ product.price }}</h4>
         <Nuxt-link :to="`/product/${product.id}`">
           <button class="multi-item">View Item</button>
         </Nuxt-link>
