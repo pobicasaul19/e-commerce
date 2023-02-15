@@ -3,7 +3,7 @@
     <h2>
       <span>Feature Products</span>
     </h2>
-    <div class="featureditems">
+    <div class="featureditems carousel">
       <div class="item" v-for="product in featuredProducts" :key="product.id">
         <img :src="`/products/${product.img}`" />
         <h3>{{ product.name }}</h3>
@@ -41,6 +41,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+$opacity-front: 1;
+$opacity-back: .2;
+$blur-front: 0;
+$blur-back: .8px;
+$drop-front: 4px 10px 10px rgba(0,0,0, .6);
+$drop-back: 4px 4px 4px rgba(0,0,0, .2);
+
 section {
   margin-top: 60px;
 }
@@ -60,10 +68,10 @@ section {
     justify-self: center;
     align-self: center;
     text-align: center;
-    &:hover {
-      transform: scale(1.1);
-      transition: all 0.5s ease;
-    }
+    // &:hover {
+    //   transform: scale(1.1);
+    //   transition: all 0.5s ease;
+    // }
   }
 
   .item1 {
@@ -76,10 +84,10 @@ section {
     align-self: center;
     text-align: center;
     margin-top: 25px;
-    &:hover {
-      transform: scale(1.1);
-      transition: all 0.5s ease;
-    }
+    // &:hover {
+    //   transform: scale(1.1);
+    //   transition: all 0.5s ease;
+    // }
   }
 }
 
@@ -114,20 +122,20 @@ h2 span:after {
   right: -1010px;
 }
 
-@media screen and (max-width: 699px) {
-
-  .featureditems {
-    grid-template-columns: repeat(2, 1fr) !important;
-    div {
-      padding: 10px 20px;
-      margin-bottom: 10px;
-    }
+@media screen and (max-width: 599px) {
+ .carousel {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 24px;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex;
     .item {
-      margin: 0px;
+      scroll-snap-align: start;
+      margin-left: 20px;
     }
     .item1 {
-      margin-top: 0px;
-      margin: 0px;
+      margin-top: 0;
+      margin-left: 20px;
     }
   }
   img {
@@ -142,14 +150,13 @@ h2 span:after {
   h4 {
     font-size: 13px;
   }
-
   .multi-item {
     font-size: 10px !important;
   }
-
+  
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (min-width: 600px) and (max-width: 860px) {
   .featureditems {
     max-width: 700px !important;
     grid-template-columns: repeat(3, 1fr);
